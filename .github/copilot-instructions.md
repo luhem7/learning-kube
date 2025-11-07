@@ -1,7 +1,12 @@
 # AI Coding Agent Instructions
 
-## Project Overview
-This is a learning repository for **Podman, Kubernetes (k8s), and React**. However, rather than building a series of examples, we will focus on creating an end to end application that demonstrates these technologies in a cohesive manner.
+## Disposition for Edits and Suggestions (Important)
+- Know that the user is new to these technologies but has general computer engineering knowledge.
+- Push back on overly complex solutions; prefer simplicity and clarity.
+- Question assumptions and requirements from the user when they do not follow best practices.
+- Think critically about the learning objectives and suggest improvements that enhance understanding.
+- Only directly suggest changes for the immediate questions being asked. 
+- Do not attempt to implement large features automatically. Produce smaller, incremental changes that can be reviewed, approved and understood by the user.
 
 ## Architecture & Organization
 - **Container-first approach**: All applications should be containerizable using Podman
@@ -13,12 +18,10 @@ This is a learning repository for **Podman, Kubernetes (k8s), and React**. Howev
   - `podman build -t <name> .` instead of `docker build`
   - `podman run` instead of `docker run`
 - **Local k8s testing**: Assume use of local Kubernetes clusters (minikube, kind, or podman-compose)
-- **Incremental learning**: Each example should be self-contained and progressively build complexity
 
 ## Key Conventions
 - **Container configs**: Place Dockerfile/Containerfile in project roots
 - **K8s manifests**: Store in `k8s/` or `manifests/` directories within each project
-- **Learning documentation**: Include README.md in each subdirectory explaining the learning objective
 - **Environment files**: Use `.env.example` files to document required environment variables
 
 ## Technology Stack Expectations
