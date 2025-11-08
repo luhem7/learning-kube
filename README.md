@@ -9,5 +9,5 @@ Our goal is to build a full stack application that servers up a website that can
 
 ## Learning Phases:
 1. [podman](docs/podman.md)
-2. kubernetes
+2. [kubernetes](docs/kubernetes.md)
 3. react
