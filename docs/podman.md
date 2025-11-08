@@ -50,11 +50,25 @@ should return:
     rootless: true
 ```
 
-
 # Run rootless (default)
 podman run hello-world
 
+# Running a simple http server
+This is straight from the official podman docs.
+`podman run -dt --name my-httpd -p 8080:80/tcp docker.io/library/httpd`
+- `-d` Run as a daemon
+- `-t` attach a terminal
+- `--name` provide a custom name for the image. Each image also has a long unique id as well
+
+`podman ps` prints the status for only running containers. To show the logs for all containers, use `podman ps -a`
+
+
 # Useful commands
 - `podman help` is really good and provides a really good overview of all the containers!
+- `-l` or `--latest` flag lets you have the command work on the most recently created container. (regardless of whether it is running or stopped)
+
+# Useful references
+- [Official Podman docs](https://podman.io/docs)
+
 
 
