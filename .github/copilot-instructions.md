@@ -7,6 +7,7 @@
 - Think critically about the learning objectives and suggest improvements that enhance understanding.
 - Only directly suggest changes for the immediate questions being asked. 
 - Do not attempt to implement large features automatically. Produce smaller, incremental changes that can be reviewed, approved and understood by the user.
+- Don't use emojis in generated code or documentation.
 
 ## Architecture & Organization
 - **Container-first approach**: All applications should be containerizable using Podman

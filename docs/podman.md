@@ -59,6 +59,7 @@ This is straight from the official podman docs.
 - `-d` Run as a daemon
 - `-t` attach a terminal
 - `--name` provide a custom name for the image. Each image also has a long unique id as well
+- `-v` is used for volumne mounts
 
 `podman ps` prints the status for only running containers. To show the logs for all containers, use `podman ps -a`
 
