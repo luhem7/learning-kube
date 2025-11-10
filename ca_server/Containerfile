@@ -1,0 +1,7 @@
+FROM docker.io/library/httpd:latest
+
+# Copy your HTML and CSS files into the container
+COPY src/ /usr/local/apache2/htdocs/
+
+# Expose port 80 (documentation - not required for functionality)
+EXPOSE 80
