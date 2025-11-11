@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: learning-kube-httpd
+  labels:
+    app: learning-kube-httpd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: learning-kube-httpd
+  template:
+    metadata:
+      labels:
+        app: learning-kube-httpd
+    spec:
+      containers:
+      - name: httpd
+        image: localhost/learning-kube-httpd:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
