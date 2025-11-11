@@ -7,6 +7,6 @@ spec:
     app: learning-kube-httpd
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 3000
     nodePort: 30080
   type: NodePort

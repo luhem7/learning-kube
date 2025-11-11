@@ -1,0 +1,22 @@
+{
+  "name": "learning-kube-server",
+  "version": "1.0.0",
+  "description": "Simple Node.js HTTP server for learning Kubernetes",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "http",
+    "static-server",
+    "kubernetes",
+    "learning"
+  ],
+  "author": "Learning Kube Project",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}
