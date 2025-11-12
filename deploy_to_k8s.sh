@@ -11,6 +11,7 @@ NC='\033[0m' # No Color
 # Configuration
 IMAGE_NAME="learning-kube-httpd:latest"
 SERVICE_NAME="learning-kube-httpd-service"
+NO_CACHE=false
 
 # Function to print colored output
 print_status() {
@@ -99,10 +100,16 @@ ensure_minikube_running() {
 
 # Function to build container image
 build_container_image() {
-    print_status "Building container image..."
+    if [ "$NO_CACHE" = true ]; then
+        print_status "Building container image (no cache)..."
+        BUILD_ARGS="--no-cache"
+    else
+        print_status "Building container image..."
+        BUILD_ARGS=""
+    fi
     
     cd ca_server
-    if ! podman build -t "$IMAGE_NAME" .; then
+    if ! podman build $BUILD_ARGS -t "$IMAGE_NAME" .; then
         print_error "Failed to build container image"
         exit 1
     fi
@@ -139,6 +146,12 @@ deploy_to_kubernetes() {
         exit 1
     fi
     
+    # If we rebuilt with no-cache, force a rollout restart to use the new image
+    if [ "$NO_CACHE" = true ]; then
+        print_status "Forcing deployment restart to use new image..."
+        kubectl rollout restart deployment/learning-kube-httpd
+    fi
+    
     cd ../..
     print_status "Deployment successful"
 }
@@ -167,12 +180,49 @@ get_application_url() {
     fi
 }
 
+# Function to parse command line arguments
+parse_arguments() {
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --no-cache)
+                NO_CACHE=true
+                shift
+                ;;
+            -h|--help)
+                echo "Usage: $0 [OPTIONS]"
+                echo ""
+                echo "Options:"
+                echo "  --no-cache    Force rebuild of container image without using cache"
+                echo "  -h, --help    Show this help message"
+                echo ""
+                echo "Examples:"
+                echo "  $0                # Deploy using cached build"
+                echo "  $0 --no-cache     # Force rebuild and deploy"
+                exit 0
+                ;;
+            *)
+                print_error "Unknown option: $1"
+                print_error "Use --help for usage information"
+                exit 1
+                ;;
+        esac
+    done
+}
+
 # Main execution
 main() {
+    # Parse command line arguments first
+    parse_arguments "$@"
+    
     echo -e "${GREEN}================================${NC}"
     echo -e "${GREEN} Learning Kube Deployment Script${NC}"
     echo -e "${GREEN}================================${NC}"
     echo ""
+    
+    if [ "$NO_CACHE" = true ]; then
+        print_warning "No-cache mode enabled - will rebuild image from scratch"
+        echo ""
+    fi
     
     # Step 1: Verify installations
     verify_podman
@@ -191,5 +241,5 @@ main() {
     get_application_url
 }
 
-# Run main function
-main
+# Run main function with all arguments
+main "$@"

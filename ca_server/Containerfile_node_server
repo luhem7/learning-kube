@@ -1,0 +1,29 @@
+FROM docker.io/library/node:24-alpine
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json (no dependencies to install for this simple server)
+COPY package.json ./
+
+# Copy application files
+COPY server.js ./
+COPY src/ ./src/
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S nodejs && \
+    adduser -S nodejs -u 1001
+
+# Change ownership of app directory
+RUN chown -R nodejs:nodejs /app
+USER nodejs
+
+# Expose port 3000
+EXPOSE 3000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+
+# Start the server
+CMD ["node", "server.js"]

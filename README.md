@@ -9,11 +9,12 @@ Our goal is to build a full stack application that serves up a website that can 
 ### Architecture
 This application demonstrates a multi-container microservices architecture deployed on Kubernetes:
 
-**Frontend Container (React)**
+**Frontend Container (React + Nginx)**
 - Interactive cellular automata visualization and controls
 - Canvas-based rendering for smooth animations
 - Client-side simulation engine managing all automata state and calculations
 - User interface for selecting rules, patterns, and simulation parameters
+- Served by nginx for efficient static file delivery and production-ready web server capabilities
 
 **API Server Container (Node.js + Fastify)**
 - RESTful API for serving cellular automata rules and patterns

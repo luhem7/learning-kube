@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learning Kube - Podman Web Server</title>
+    <title>Learning Kube - Nginx on Kubernetes</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,24 +16,26 @@
         <div class="tech-stack">
             <span class="tech-badge">🐳 Podman</span>
             <span class="tech-badge">☸️ Kubernetes</span>
+            <span class="tech-badge">🌐 Nginx</span>
             <span class="tech-badge">⚛️ React</span>
         </div>
         
         <h2>Current Status</h2>
-        <p>✅ This HTML file is being served by a Podman container!</p>
-        <p>🎯 Next: Learn volume mounting and container networking</p>
+        <p>✅ This HTML file is being served by nginx in a Podman container running on Kubernetes!</p>
+        <p>🎯 Next: Learn persistent volumes and service discovery</p>
         
-        <h2>Container Info</h2>
+        <h2>Kubernetes Deployment Info</h2>
         <p>If you're seeing this page, it means:</p>
         <ul>
-            <li>Podman is working correctly</li>
-            <li>The httpd container is running</li>
-            <li>Port mapping (8080:80) is configured</li>
-            <li>Volume mounting is working (if applicable)</li>
+            <li>Podman built the container image successfully</li>
+            <li>The nginx container is running in a Kubernetes pod</li>
+            <li>Kubernetes Service is routing traffic (NodePort 30080)</li>
+            <li>Static files are served directly by nginx</li>
+            <li>Container orchestration is working!</li>
         </ul>
         
         <footer style="margin-top: 40px; text-align: center; color: #7f8c8d;">
-            <p>Served by Apache httpd in a Podman container 🐳</p>
+            <p>Served by nginx in a Podman container running on Kubernetes ☸️🐳</p>
         </footer>
     </div>
 </body>

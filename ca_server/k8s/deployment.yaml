@@ -19,4 +19,4 @@ spec:
         image: localhost/learning-kube-httpd:latest
         imagePullPolicy: Never
         ports:
-        - containerPort: 3000
+        - containerPort: 80
