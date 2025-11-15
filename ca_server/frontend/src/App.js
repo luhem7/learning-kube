@@ -5,7 +5,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Cellular Automata Simulator</h1>
-        <p>Interactive cellular automata visualization and controls</p>
+        <p>An experiment demonstrating react concepts using cellular automata</p>
       </header>
       
       <div className="canvas-container">
