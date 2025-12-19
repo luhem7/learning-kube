@@ -3,10 +3,18 @@ import React from 'react'
 function Main() {
   return (
     <div className="main-container">
-      <canvas>
+      <canvas 
+        width="800" 
+        height="600"
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'contain'
+        }}
+      >
         Your browser does not support the HTML5 canvas element.
       </canvas>
-      <p>This is the Main component with placeholder text. The canvas element is ready for your interactive content!</p>
+      <p>Controls: Tap the screen above to toggle the state</p>
     </div>
   )
 }
