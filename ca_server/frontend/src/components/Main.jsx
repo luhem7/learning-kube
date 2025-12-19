@@ -4,7 +4,7 @@ function Main() {
   return (
     <div className="main-container">
       <canvas 
-        width="800" 
+        width="400" 
         height="600"
         style={{
           width: '100%',
