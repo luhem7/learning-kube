@@ -14,7 +14,7 @@ function Main() {
       >
         Your browser does not support the HTML5 canvas element.
       </canvas>
-      <p>Controls: Tap the screen above to toggle the state</p>
+      <p>Tap the simulation area above ☝️</p>
     </div>
   )
 }
